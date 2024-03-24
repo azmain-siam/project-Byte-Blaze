@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const [theme, setTheme] = useState(
@@ -25,21 +26,39 @@ const Navbar = () => {
     <div>
       <div className="navbar bg-base-100 shadow-lg px-4 fixed z-10">
         <div className="flex-1">
-          <a className="btn btn-ghost font-bold text-2xl gap-0 text-secondary ">
+          <Link
+            to={"/"}
+            className="btn btn-ghost font-bold text-2xl gap-0 text-secondary "
+          >
             Byte<span className="text-primary">Blaze</span>
-          </a>
+          </Link>
         </div>
-        <div className="flex-none">
-          <ul className="menu menu-horizontal px-1">
-            <li className="font-bold">
-              <a>Home</a>
-            </li>
-            <li className="font-bold text-primary">
-              <a>Blogs</a>
-            </li>
-            <li className="font-bold">
-              <a>Bookmarks</a>
-            </li>
+        <div className="flex-none gap-4">
+          <ul className="menu menu-horizontal px-1 gap-5">
+            <NavLink
+              to={"/"}
+              className={({ isActive }) =>
+                isActive ? "font-bold text-primary" : "font-bold"
+              }
+            >
+              Home
+            </NavLink>
+            <NavLink
+              to={"/blogs"}
+              className={({ isActive }) =>
+                isActive ? "font-bold text-primary" : "font-bold"
+              }
+            >
+              Blogs
+            </NavLink>
+            <NavLink
+              to={"/bookmarks"}
+              className={({ isActive }) =>
+                isActive ? "font-bold text-primary" : "font-bold"
+              }
+            >
+              Bookmarks
+            </NavLink>
           </ul>
 
           {/* ---------------Controller---------------- */}
